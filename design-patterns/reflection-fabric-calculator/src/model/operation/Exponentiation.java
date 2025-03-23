@@ -1,13 +1,15 @@
 package model.operation;
 
-import model.exception.DivisionByZeroException;
 import model.exception.IndeterminationException;
 
-public class Divide implements IOperation {
+public class Exponentiation implements IOperation{
     @Override
     public float operate(float value1, float value2) throws ArithmeticException {
         if (value1 == 0 && value2 == 0) throw new IndeterminationException();
-        else if (value2 == 0) throw new DivisionByZeroException();
-        else return value1 / value2;
+        float result = 1;
+        for (int i = 0; i < value2; i++) {
+            result = result * value1;
+        }
+        return result;
     }
 }
