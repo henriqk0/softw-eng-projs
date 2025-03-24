@@ -7,21 +7,26 @@ import model.exception.InvalidOperationException;
 import model.operation.IOperation;
 
 public class OperationFactory {
+    private static OperationFactory instance;
+
+    private OperationFactory() {}
+
+    public static OperationFactory getInstance() {
+        if (OperationFactory.instance == null) {
+            OperationFactory.instance = new OperationFactory();
+        }
+        return instance;
+    }
+
     public static IOperation factory(int operationType) throws InvalidOperationException {
         Object instantiatedClass = null;
         try {
-            OperationFactory o = new OperationFactory();
+            OperationFactory o = OperationFactory.getInstance();
             String rootOperationType = "model.operation." + o.getOperationType(operationType);
             instantiatedClass = Class.forName(rootOperationType).getDeclaredConstructor().newInstance();
-        } catch (ClassNotFoundException e) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
             e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            throw new RuntimeException(e);
-        } catch (NoSuchMethodException e) {
+        } catch (InvocationTargetException | NoSuchMethodException e) {
             throw new RuntimeException(e);
         }
         return (IOperation) instantiatedClass;
