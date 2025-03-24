@@ -1,7 +1,5 @@
 package model.calculator;
 
-import javax.management.OperationsException;
-
 import model.datatransfer.Outputs;
 import model.datatransfer.Inputs;
 import model.exception.DivisionByZeroException;

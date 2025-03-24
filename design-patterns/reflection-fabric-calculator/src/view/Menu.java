@@ -21,6 +21,7 @@ public class Menu {
         float value1 = scanner.nextFloat();
         System.out.println("2º operador: ");
         float value2 = scanner.nextFloat();
+
         return new Inputs(option, value1, value2);
     }
     
