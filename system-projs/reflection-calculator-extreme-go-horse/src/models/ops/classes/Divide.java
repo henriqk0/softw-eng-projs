@@ -1,9 +1,10 @@
-package models.ops;
+package models.ops.classes;
 
 import java.math.BigDecimal;
 
 import models.exception.DivisionByZeroException;
 import models.exception.IndeterminationException;
+import models.ops.interfaces.IOperation;
 
 
 public class Divide implements IOperation {

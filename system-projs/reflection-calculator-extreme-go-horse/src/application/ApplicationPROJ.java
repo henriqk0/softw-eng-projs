@@ -7,14 +7,14 @@ import models.exception.IndeterminationException;
 import view.MenuV0;
 
 
-public class Application {
+public class ApplicationPROJ {
     public static void main(String[] args) {
         MenuV0 menu = new MenuV0();
         menu.show();
 
         CalcControllerV0 calc = new CalcControllerV0();
         try {
-            System.out.println(calc.calculate(menu.newEntry()).getResult());
+            System.out.println(calc.calculate(menu.newEntry()));
         } catch (IndeterminationException e ){
             System.out.println("ERRO. O resultado da expressão é indeterminado " + e);
         }
@@ -23,6 +23,7 @@ public class Application {
         }
         catch ( RuntimeException e ) {
             System.out.println("ERRO de execução.");
+            e.printStackTrace();
         }
     }
 }

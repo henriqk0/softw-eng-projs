@@ -1,4 +1,4 @@
-package models.ops;
+package models.ops.interfaces;
 
 import java.math.BigDecimal;
 

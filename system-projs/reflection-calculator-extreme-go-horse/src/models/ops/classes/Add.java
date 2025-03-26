@@ -1,6 +1,8 @@
-package models.ops;
+package models.ops.classes;
 
 import java.math.BigDecimal;
+
+import models.ops.interfaces.IOperation;
 
 public class Add implements IOperation{
     @Override
