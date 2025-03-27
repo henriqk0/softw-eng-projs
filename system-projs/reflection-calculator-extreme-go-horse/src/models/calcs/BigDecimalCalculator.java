@@ -10,10 +10,10 @@ import models.ops.interfaces.IOperation;
 
 public class BigDecimalCalculator {
     
-    public Response calculate(Request req) throws InvalidOperationException, ArithmeticException {
+    public Response calculate(Request req) throws ArithmeticException {
         Object instantiatedClass = null;
         try {
-            String rootOperationType = "models.ops.classes." + req.getOperationType(req.getOption());
+            String rootOperationType = "models.ops.classes." + req.getOption();
             instantiatedClass = Class.forName(rootOperationType).getDeclaredConstructor().newInstance();
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
             e.printStackTrace();

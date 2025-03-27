@@ -1,20 +1,33 @@
 package view;
 
+import java.io.File;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
+
+import application.FileLister;
 import models.exception.InvalidOperationException;
 import controller.dto.Request;
 
 
 public class MenuV0 {
+    static Scanner scanner = new Scanner(System.in);
+
+    static String dir = "system-projs"+ File.separator +"reflection-calculator-extreme-go-horse" + File.separator + "src" + File.separator + "models" + File.separator + "ops" + File.separator + "classes";
+    static FileLister fl = new FileLister();
+    static ArrayList<String> operations = fl.loadOperations(dir);
+
     public void show() {
-        // att to builds this auto
-        System.out.println("Escolha uma opcao:\n1 - Adicao\n2 - Subtracao\n3 - Multiplicacao\n4 - Divisao");
+        System.out.println("Choose an option:");
+        for (String op : operations) {
+            System.out.println(op);
+        }
     }
 
     public Request newEntry(){ 
-        int option;
+        String option;
         BigDecimal value1, value2;
 
         option = MenuV0.readOption();
@@ -23,12 +36,11 @@ public class MenuV0 {
         System.out.println("2º operator: ");
         value2 = MenuV0.readBigDecimal();
         
+        scanner.close();
         return new Request(option, value1, value2);
     }
 
     public static BigDecimal readBigDecimal() {
-        Scanner scanner = new Scanner(System.in);
-
         BigDecimal value; 
         while (true) {
             try {
@@ -40,27 +52,26 @@ public class MenuV0 {
                 value = scanner.nextBigDecimal();
             }
         }
-        scanner.close();
         return value;
     }
 
-    public static int readOption() {
-        Scanner scanner = new Scanner(System.in);
-
-        int option = 0;
+    public static String readOption() {
+        String option;
         while (true) {
             try {
-                option = scanner.nextInt();
-                if (option > 4 || option < 1) throw new InvalidOperationException();
-                break;
+                option = scanner.nextLine();
+                for (String operation : operations) {
+                    if (option.equalsIgnoreCase(operation)) {
+                        option = operation;
+                        return option;
+                    }
+                }
+                throw new InvalidOperationException();
             }
-            catch(InvalidOperationException | InputMismatchException e){
+            catch(NoSuchElementException | InvalidOperationException | IllegalStateException e){
                 System.out.println("Invalid option. Try again:");
-                option = scanner.nextInt();
             }
         }
-        scanner.close();
-        return option;
     }
 }
 

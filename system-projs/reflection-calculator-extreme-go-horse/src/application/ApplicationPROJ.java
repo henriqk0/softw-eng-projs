@@ -14,12 +14,12 @@ public class ApplicationPROJ {
 
         CalcControllerV0 calc = new CalcControllerV0();
         try {
-            System.out.println(calc.calculate(menu.newEntry()));
+            System.out.println("Result = "+ calc.calculate(menu.newEntry()));
         } catch (IndeterminationException e ){
-            System.out.println("ERRO. O resultado da expressão é indeterminado " + e);
+            System.out.println("ERRO. O resultado da expressão é indeterminado.");
         }
         catch (DivisionByZeroException e){
-            System.out.println("ERRO de divisão por 0 " + e);
+            System.out.println("ERRO de divisão por 0.");
         }
         catch ( RuntimeException e ) {
             System.out.println("ERRO de execução.");
