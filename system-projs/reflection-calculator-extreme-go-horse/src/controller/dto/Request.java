@@ -2,7 +2,6 @@ package controller.dto;
 
 import java.math.BigDecimal;
 
-import models.exception.InvalidOperationException;
 
 public class Request {
     String option;
