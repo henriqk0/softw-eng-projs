@@ -1,0 +1,1 @@
+{"calculator-datas": [{"value1": 4.7, "value2": 2.5, "operator": "sum"}, {"value1": 10, "value2": 3, "operator": "subtract"}, {"value1": 10, "value2": 2, "operator": "divide"}, {"value1": 3, "value2": 4, "operator": "multiply"}, {"value1": 20.0, "value2": 6.0, "operator": "soma"}]}
