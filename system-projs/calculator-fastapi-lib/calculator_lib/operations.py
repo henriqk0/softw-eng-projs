@@ -7,7 +7,7 @@ def subtract_to_api(first_value, second_value):
 def multiply_to_api(first_value, second_value):
     return first_value * second_value;
 
-def division(first_value, second_value):
+def divide_to_api(first_value, second_value):
     if (second_value == 0 and first_value == 0): raise ValueError("ERRO: Indefinição (0/0)");
     if (second_value == 0): raise ValueError('ERRO: Não é possível dividir por 0.');
     return first_value / second_value;     

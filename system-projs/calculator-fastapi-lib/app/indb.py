@@ -1,4 +1,4 @@
-from CalculatorData import RequestData
+from .models import RecordData
 from pydantic import BaseModel
 import json
 
@@ -12,8 +12,10 @@ class JsonDB(BaseModel):
         f.close()
         return data
     
-    def insert(self, calculator_data: RequestData):
+    def insert(self, calculator_data: RecordData):
         data = self.read()
+        if 'calculator-datas' not in data:
+            data['calculator-datas'] = []
         data['calculator-datas'].append(calculator_data.model_dump())
         f = open(self.path, 'w')
         f.write(json.dumps(data))

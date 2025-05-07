@@ -8,3 +8,9 @@ class RequestData(BaseModel):
 
 class ResponseData(BaseModel):
     result: float
+
+
+class RecordData(BaseModel):
+    inputs: RequestData
+    output: ResponseData
+    operation: str
